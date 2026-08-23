@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "D:\\MCV\\dotNET\\StudentManagement.Api\\StudentManagement.Api\\StudentManagement.Api.csproj": {}
+    "D:\\MCV\\dotNET\\StudentManagement.Api\\StudentManagement_Day01\\StudentManagement.Api.csproj": {}
   },
   "projects": {
-    "D:\\MCV\\dotNET\\StudentManagement.Api\\StudentManagement.Api\\StudentManagement.Api.csproj": {
+    "D:\\MCV\\dotNET\\StudentManagement.Api\\StudentManagement_Day01\\StudentManagement.Api.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\MCV\\dotNET\\StudentManagement.Api\\StudentManagement.Api\\StudentManagement.Api.csproj",
+        "projectUniqueName": "D:\\MCV\\dotNET\\StudentManagement.Api\\StudentManagement_Day01\\StudentManagement.Api.csproj",
         "projectName": "StudentManagement.Api",
-        "projectPath": "D:\\MCV\\dotNET\\StudentManagement.Api\\StudentManagement.Api\\StudentManagement.Api.csproj",
+        "projectPath": "D:\\MCV\\dotNET\\StudentManagement.Api\\StudentManagement_Day01\\StudentManagement.Api.csproj",
         "packagesPath": "C:\\Users\\kiroa\\.nuget\\packages\\",
-        "outputPath": "D:\\MCV\\dotNET\\StudentManagement.Api\\StudentManagement.Api\\obj\\",
+        "outputPath": "D:\\MCV\\dotNET\\StudentManagement.Api\\StudentManagement_Day01\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"

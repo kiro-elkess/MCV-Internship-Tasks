@@ -1,7 +1,5 @@
 using Microsoft.AspNetCore.Mvc;
 using StudentApi.Models;
-using DepartmentApi.Models;
-using StudentApi.Services;
 
 namespace StudentApi.Controllers
 {
@@ -9,22 +7,21 @@ namespace StudentApi.Controllers
     [ApiController]
     public class StudentsController : ControllerBase
     {
-        private readonly IStudentService _studentService;
-        private readonly IDepartmentService _departmentService;
-
-        public StudentsController(IStudentService studentService, IDepartmentService departmentService)
+        // Simple In-Memory List (Static so data persists during runtime)
+        private static List<Student> _students = new List<Student>
         {
-            _studentService = studentService ?? throw new ArgumentNullException(nameof(studentService));
-            _departmentService = departmentService ?? throw new ArgumentNullException(nameof(departmentService));
-        }
+            new Student { Id = 1, Name = "Ahmed Ali", Age = 20, Department = "Computer Science" },
+            new Student { Id = 2, Name = "Sara Mohamed", Age = 22, Department = "Information Systems" },
+            new Student { Id = 3, Name = "Omar Hassan", Age = 21, Department = "Computer Science" },
+            new Student { Id = 4, Name = "Mona Ibrahim", Age = 23, Department = "Software Engineering" }
+        };
 
         // 1. Get all students
         // GET: api/students
         [HttpGet]
         public IActionResult GetAll()
         {
-            var students = _studentService.GetAll();
-            return Ok(students);
+            return Ok(_students);
         }
 
         // 2. Get student by ID
@@ -32,7 +29,7 @@ namespace StudentApi.Controllers
         [HttpGet("{id:int}")]
         public IActionResult GetById([FromRoute] int id)
         {
-            var student = _studentService.GetById(id);
+            var student = _students.FirstOrDefault(s => s.Id == id);
             if (student == null)
             {
                 return NotFound(new { Message = $"Student with ID {id} was not found." });
@@ -50,7 +47,10 @@ namespace StudentApi.Controllers
                 return BadRequest(new { Message = "Search parameter 'name' is required." });
             }
 
-            var results = _studentService.SearchByName(name);
+            var results = _students
+                .Where(s => s.Name.Contains(name, StringComparison.OrdinalIgnoreCase))
+                .ToList();
+
             return Ok(results);
         }
 
@@ -59,8 +59,19 @@ namespace StudentApi.Controllers
         [HttpGet("filter")]
         public IActionResult FilterByAge([FromQuery] int? minAge, [FromQuery] int? maxAge)
         {
-            var results = _studentService.FilterByAge(minAge, maxAge);
-            return Ok(results);
+            var query = _students.AsQueryable();
+
+            if (minAge.HasValue)
+            {
+                query = query.Where(s => s.Age >= minAge.Value);
+            }
+
+            if (maxAge.HasValue)
+            {
+                query = query.Where(s => s.Age <= maxAge.Value);
+            }
+
+            return Ok(query.ToList());
         }
 
         // 5. Add a new student (Request Body)
@@ -73,15 +84,11 @@ namespace StudentApi.Controllers
                 return BadRequest(new { Message = "Invalid student data." });
             }
 
-            // Validate department exists before adding
-            var dept = _departmentService.GetById(newStudent.DepartmentId);
-            if (dept == null)
-            {
-                return BadRequest(new { Message = $"Department with ID {newStudent.DepartmentId} does not exist." });
-            }
+            // Auto-increment ID logic for in-memory list
+            newStudent.Id = _students.Any() ? _students.Max(s => s.Id) + 1 : 1;
+            _students.Add(newStudent);
 
-            var created = _studentService.Create(newStudent);
-            return CreatedAtAction(nameof(GetById), new { id = created.Id }, created);
+            return CreatedAtAction(nameof(GetById), new { id = newStudent.Id }, newStudent);
         }
 
         // 6. Edit student data (Route + Request Body)
@@ -89,25 +96,17 @@ namespace StudentApi.Controllers
         [HttpPut("{id:int}")]
         public IActionResult Update([FromRoute] int id, [FromBody] Student updatedStudent)
         {
-            if (updatedStudent == null)
-            {
-                return BadRequest(new { Message = "Invalid student data." });
-            }
-
-            // Validate department exists before updating
-            var dept = _departmentService.GetById(updatedStudent.DepartmentId);
-            if (dept == null)
-            {
-                return BadRequest(new { Message = $"Department with ID {updatedStudent.DepartmentId} does not exist." });
-            }
-
-            var updated = _studentService.Update(id, updatedStudent);
-            if (updated == null)
+            var existingStudent = _students.FirstOrDefault(s => s.Id == id);
+            if (existingStudent == null)
             {
                 return NotFound(new { Message = $"Student with ID {id} was not found." });
             }
 
-            return Ok(new { Message = "Student updated successfully.", Student = updated });
+            existingStudent.Name = updatedStudent.Name;
+            existingStudent.Age = updatedStudent.Age;
+            existingStudent.Department = updatedStudent.Department;
+
+            return Ok(new { Message = "Student updated successfully.", Student = existingStudent });
         }
 
         // 7. Delete a student (Route)
@@ -115,12 +114,13 @@ namespace StudentApi.Controllers
         [HttpDelete("{id:int}")]
         public IActionResult Delete([FromRoute] int id)
         {
-            var deleted = _studentService.Delete(id);
-            if (!deleted)
+            var student = _students.FirstOrDefault(s => s.Id == id);
+            if (student == null)
             {
                 return NotFound(new { Message = $"Student with ID {id} was not found." });
             }
 
+            _students.Remove(student);
             return Ok(new { Message = $"Student with ID {id} deleted successfully." });
         }
     }
