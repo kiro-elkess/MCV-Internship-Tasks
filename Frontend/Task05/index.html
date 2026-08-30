@@ -1,0 +1,426 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="PhotoFolio - Photography portfolio built with Bootstrap 5.">
+  <title>PhotoFolio | Bootstrap Rebuild</title>
+
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body data-bs-spy="scroll" data-bs-target="#mainNav" data-bs-offset="90" tabindex="0">
+
+  <!-- NAVBAR -->
+  <nav class="navbar navbar-expand-lg navbar-dark fixed-top" id="mainNav">
+    <div class="container">
+      <a class="navbar-brand fw-bold fs-4" href="#hero">
+        <i class="fa-solid fa-camera text-accent me-2"></i>PhotoFolio
+      </a>
+
+      <button class="navbar-toggler border-0 shadow-none" type="button" data-bs-toggle="collapse"
+              data-bs-target="#navContent" aria-controls="navContent"
+              aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+
+      <div class="collapse navbar-collapse" id="navContent">
+        <ul class="navbar-nav mx-auto mb-3 mb-lg-0 text-center text-lg-start">
+          <li class="nav-item"><a class="nav-link px-3" href="#hero">Home</a></li>
+          <li class="nav-item"><a class="nav-link px-3" href="#about">About</a></li>
+          <li class="nav-item"><a class="nav-link px-3" href="#portfolio">Gallery</a></li>
+          <li class="nav-item"><a class="nav-link px-3" href="#services">Services</a></li>
+          <li class="nav-item"><a class="nav-link px-3" href="#contact">Contact</a></li>
+        </ul>
+
+        <div class="d-flex gap-3 social-links justify-content-center">
+          <a href="#" class="social-icon" aria-label="Twitter"><i class="fa-brands fa-twitter"></i></a>
+          <a href="#" class="social-icon" aria-label="Facebook"><i class="fa-brands fa-facebook"></i></a>
+          <a href="#" class="social-icon" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
+        </div>
+      </div>
+    </div>
+  </nav>
+
+  <!-- HERO -->
+  <header id="hero" class="hero-section d-flex align-items-center">
+    <div class="container text-center text-lg-start">
+      <div class="row align-items-center g-5">
+        <div class="col-lg-7">
+          <span class="badge rounded-pill bg-accent-subtle text-accent mb-3 px-3 py-2 fs-6">
+            <i class="fa-solid fa-wand-magic-sparkles me-1"></i> Photography &amp; Visual Storytelling
+          </span>
+          <h1 class="display-3 fw-bold mb-3">Capturing Moments,<br>Creating <span class="text-accent">Memories</span>.</h1>
+          <p class="lead text-muted-2 col-lg-10 mx-auto mx-lg-0 mb-4">
+            Professional freelance photographer focused on nature, portraits, and breathtaking landscapes.
+          </p>
+          <div class="d-flex gap-3 justify-content-center justify-content-lg-start">
+            <a href="#portfolio" class="btn btn-accent btn-lg px-4 rounded-pill">View Gallery</a>
+            <a href="#contact" class="btn btn-outline-light btn-lg px-4 rounded-pill">Hire Me</a>
+          </div>
+        </div>
+        <div class="col-lg-5 d-none d-lg-block">
+          <img src="https://images.unsplash.com/photo-1554048612-b6a482bc67e5?w=700&auto=format&fit=crop"
+               class="img-fluid rounded-4 shadow-lg hero-img" alt="Photographer in action">
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- ABOUT -->
+  <section id="about" class="section-padding">
+    <div class="container">
+      <div class="row align-items-center g-5">
+        <div class="col-lg-6">
+          <img src="https://images.unsplash.com/photo-1516035069371-29a1b244cc32?w=700&auto=format&fit=crop"
+               class="img-fluid rounded-4 shadow" alt="About PhotoFolio Studio">
+        </div>
+        <div class="col-lg-6">
+          <h6 class="text-accent text-uppercase fw-semibold mb-2">About Me</h6>
+          <h2 class="fw-bold mb-3 display-6">Turning everyday scenes into lasting stories</h2>
+          <p class="text-muted-2 mb-4">
+            With over 6 years behind the lens, I specialize in landscape and portrait photography. Every project is an opportunity to discover unique perspectives and translate emotion into visual art.
+          </p>
+
+          <div class="row row-cols-1 row-cols-sm-2 g-3">
+            <div class="col d-flex align-items-center gap-2 text-light">
+              <i class="fa-solid fa-circle-check text-accent fs-5"></i>
+              <span>6+ Years Experience</span>
+            </div>
+            <div class="col d-flex align-items-center gap-2 text-light">
+              <i class="fa-solid fa-circle-check text-accent fs-5"></i>
+              <span>300+ Projects Delivered</span>
+            </div>
+            <div class="col d-flex align-items-center gap-2 text-light">
+              <i class="fa-solid fa-circle-check text-accent fs-5"></i>
+              <span>Nature &amp; Portrait Focus</span>
+            </div>
+            <div class="col d-flex align-items-center gap-2 text-light">
+              <i class="fa-solid fa-circle-check text-accent fs-5"></i>
+              <span>Worldwide Availability</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SERVICES -->
+  <section id="services" class="section-padding bg-alt">
+    <div class="container">
+      <div class="text-center mb-5">
+        <h6 class="text-accent text-uppercase fw-semibold mb-2">Services</h6>
+        <h2 class="fw-bold display-6">What I Offer</h2>
+      </div>
+
+      <div class="row row-cols-1 row-cols-md-3 g-4">
+        <div class="col">
+          <div class="card h-100 service-card text-center p-4">
+            <div class="icon-wrapper mb-3">
+              <i class="fa-solid fa-camera-retro fa-2x text-accent"></i>
+            </div>
+            <h5 class="fw-semibold text-white">Photo Sessions</h5>
+            <p class="text-muted-2 mb-0">On-location shoots for portraits, outdoor events, and creative editorial concepts.</p>
+          </div>
+        </div>
+        <div class="col">
+          <div class="card h-100 service-card text-center p-4">
+            <div class="icon-wrapper mb-3">
+              <i class="fa-solid fa-wand-magic-sparkles fa-2x text-accent"></i>
+            </div>
+            <h5 class="fw-semibold text-white">Photo Editing</h5>
+            <p class="text-muted-2 mb-0">High-end retouching, dynamic color grading, and archival image restoration.</p>
+          </div>
+        </div>
+        <div class="col">
+          <div class="card h-100 service-card text-center p-4">
+            <div class="icon-wrapper mb-3">
+              <i class="fa-solid fa-book-open fa-2x text-accent"></i>
+            </div>
+            <h5 class="fw-semibold text-white">Print &amp; Albums</h5>
+            <p class="text-muted-2 mb-0">Custom-designed photo books and premium museum-quality fine-art canvas prints.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PORTFOLIO / GALLERY -->
+  <section id="portfolio" class="section-padding">
+    <div class="container">
+      <div class="text-center mb-4">
+        <h6 class="text-accent text-uppercase fw-semibold mb-2">Portfolio</h6>
+        <h2 class="fw-bold display-6">Recent Gallery</h2>
+      </div>
+
+      <!-- Category Filter Buttons -->
+      <div class="d-flex flex-wrap justify-content-center gap-2 mb-5">
+        <button class="btn btn-filter active px-3 py-1 rounded-pill" data-filter="all">All</button>
+        <button class="btn btn-filter px-3 py-1 rounded-pill" data-filter="nature">Nature</button>
+        <button class="btn btn-filter px-3 py-1 rounded-pill" data-filter="outdoors">Outdoors</button>
+        <button class="btn btn-filter px-3 py-1 rounded-pill" data-filter="forest">Forest</button>
+      </div>
+
+      <!-- Gallery Grid: col-12 col-md-6 col-lg-4 -->
+      <div class="row g-4" id="galleryGrid">
+
+        <div class="col-12 col-md-6 col-lg-4 gallery-col" data-category="nature">
+          <div class="gallery-item">
+            <img src="https://images.unsplash.com/photo-1507525428034-b723cf961d3e?w=600&auto=format&fit=crop" alt="Tropical Beach">
+            <div class="overlay">
+              <div class="actions">
+                <a href="#" data-bs-toggle="modal" data-bs-target="#lightboxModal"
+                   data-img="https://images.unsplash.com/photo-1507525428034-b723cf961d3e?w=1200&auto=format&fit=crop"
+                   data-title="Tropical Beach" aria-label="Zoom image"><i class="fa-solid fa-magnifying-glass-plus"></i></a>
+                <a href="#" aria-label="View details"><i class="fa-solid fa-link"></i></a>
+              </div>
+              <h3>Tropical Beach</h3>
+              <p>Nature / Ocean</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-12 col-md-6 col-lg-4 gallery-col" data-category="outdoors">
+          <div class="gallery-item">
+            <img src="https://images.unsplash.com/photo-1519681393784-d120267933ba?w=600&auto=format&fit=crop" alt="Starry Night">
+            <div class="overlay">
+              <div class="actions">
+                <a href="#" data-bs-toggle="modal" data-bs-target="#lightboxModal"
+                   data-img="https://images.unsplash.com/photo-1519681393784-d120267933ba?w=1200&auto=format&fit=crop"
+                   data-title="Starry Night" aria-label="Zoom image"><i class="fa-solid fa-magnifying-glass-plus"></i></a>
+                <a href="#" aria-label="View details"><i class="fa-solid fa-link"></i></a>
+              </div>
+              <h3>Starry Night</h3>
+              <p>Outdoors / Night</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-12 col-md-6 col-lg-4 gallery-col" data-category="forest">
+          <div class="gallery-item">
+            <img src="https://images.unsplash.com/photo-1470071459604-3b5ec3a7fe05?w=600&auto=format&fit=crop" alt="Mist and Trees">
+            <div class="overlay">
+              <div class="actions">
+                <a href="#" data-bs-toggle="modal" data-bs-target="#lightboxModal"
+                   data-img="https://images.unsplash.com/photo-1470071459604-3b5ec3a7fe05?w=1200&auto=format&fit=crop"
+                   data-title="Mist &amp; Trees" aria-label="Zoom image"><i class="fa-solid fa-magnifying-glass-plus"></i></a>
+                <a href="#" aria-label="View details"><i class="fa-solid fa-link"></i></a>
+              </div>
+              <h3>Mist &amp; Trees</h3>
+              <p>Forest / Landscape</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-12 col-md-6 col-lg-4 gallery-col" data-category="outdoors">
+          <div class="gallery-item">
+            <img src="https://images.unsplash.com/photo-1469474968028-56623f02e42e?w=600&auto=format&fit=crop" alt="Alpine Path">
+            <div class="overlay">
+              <div class="actions">
+                <a href="#" data-bs-toggle="modal" data-bs-target="#lightboxModal"
+                   data-img="https://images.unsplash.com/photo-1469474968028-56623f02e42e?w=1200&auto=format&fit=crop"
+                   data-title="Alpine Path" aria-label="Zoom image"><i class="fa-solid fa-magnifying-glass-plus"></i></a>
+                <a href="#" aria-label="View details"><i class="fa-solid fa-link"></i></a>
+              </div>
+              <h3>Alpine Path</h3>
+              <p>Outdoors / Adventure</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-12 col-md-6 col-lg-4 gallery-col" data-category="forest">
+          <div class="gallery-item">
+            <img src="https://images.unsplash.com/photo-1447752875215-b2761acb3c5d?w=600&auto=format&fit=crop" alt="Autumn Foliage">
+            <div class="overlay">
+              <div class="actions">
+                <a href="#" data-bs-toggle="modal" data-bs-target="#lightboxModal"
+                   data-img="https://images.unsplash.com/photo-1447752875215-b2761acb3c5d?w=1200&auto=format&fit=crop"
+                   data-title="Autumn Foliage" aria-label="Zoom image"><i class="fa-solid fa-magnifying-glass-plus"></i></a>
+                <a href="#" aria-label="View details"><i class="fa-solid fa-link"></i></a>
+              </div>
+              <h3>Autumn Foliage</h3>
+              <p>Forest / Season</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-12 col-md-6 col-lg-4 gallery-col" data-category="nature">
+          <div class="gallery-item">
+            <img src="https://images.unsplash.com/photo-1501785888041-af3ef285b470?w=600&auto=format&fit=crop" alt="Serene Waters">
+            <div class="overlay">
+              <div class="actions">
+                <a href="#" data-bs-toggle="modal" data-bs-target="#lightboxModal"
+                   data-img="https://images.unsplash.com/photo-1501785888041-af3ef285b470?w=1200&auto=format&fit=crop"
+                   data-title="Serene Waters" aria-label="Zoom image"><i class="fa-solid fa-magnifying-glass-plus"></i></a>
+                <a href="#" aria-label="View details"><i class="fa-solid fa-link"></i></a>
+              </div>
+              <h3>Serene Waters</h3>
+              <p>Nature / Lakeside</p>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- LIGHTBOX MODAL -->
+  <div class="modal fade" id="lightboxModal" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-lg">
+      <div class="modal-content bg-dark-2 border-secondary shadow-lg">
+        <div class="modal-header border-0 pb-0">
+          <h5 class="modal-title fw-semibold text-white" id="lightboxTitle">Photo Preview</h5>
+          <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body text-center p-3">
+          <img id="lightboxImg" src="" alt="" class="img-fluid rounded-3">
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- CONTACT -->
+  <section id="contact" class="section-padding bg-alt">
+    <div class="container">
+      <div class="text-center mb-5">
+        <h6 class="text-accent text-uppercase fw-semibold mb-2">Contact</h6>
+        <h2 class="fw-bold display-6">Let's Work Together</h2>
+      </div>
+
+      <div class="row g-5">
+        <div class="col-lg-5">
+          <div class="contact-info-card p-4 rounded-4 bg-dark-2 border border-secondary-subtle">
+            <div class="d-flex align-items-start gap-3 mb-4">
+              <div class="icon-box text-accent bg-accent-subtle rounded-circle p-3">
+                <i class="fa-solid fa-location-dot fa-lg"></i>
+              </div>
+              <div>
+                <h6 class="fw-semibold mb-1 text-white">Location</h6>
+                <p class="text-muted-2 mb-0">Cairo, Egypt</p>
+              </div>
+            </div>
+            <div class="d-flex align-items-start gap-3 mb-4">
+              <div class="icon-box text-accent bg-accent-subtle rounded-circle p-3">
+                <i class="fa-solid fa-envelope fa-lg"></i>
+              </div>
+              <div>
+                <h6 class="fw-semibold mb-1 text-white">Email</h6>
+                <p class="text-muted-2 mb-0">hello@photofolio.demo</p>
+              </div>
+            </div>
+            <div class="d-flex align-items-start gap-3">
+              <div class="icon-box text-accent bg-accent-subtle rounded-circle p-3">
+                <i class="fa-solid fa-phone fa-lg"></i>
+              </div>
+              <div>
+                <h6 class="fw-semibold mb-1 text-white">Phone</h6>
+                <p class="text-muted-2 mb-0">+20 100 000 0000</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-lg-7">
+          <form id="contactForm" class="bg-dark-2 p-4 p-md-5 rounded-4 border border-secondary-subtle">
+            <div class="row g-3">
+              <div class="col-md-6">
+                <label for="contactName" class="form-label text-light">Your Name</label>
+                <input type="text" class="form-control bg-dark text-white border-secondary" id="contactName" placeholder="John Doe" required>
+              </div>
+              <div class="col-md-6">
+                <label for="contactEmail" class="form-label text-light">Your Email</label>
+                <input type="email" class="form-control bg-dark text-white border-secondary" id="contactEmail" placeholder="john@example.com" required>
+              </div>
+              <div class="col-12">
+                <label for="contactSubject" class="form-label text-light">Subject</label>
+                <input type="text" class="form-control bg-dark text-white border-secondary" id="contactSubject" placeholder="Project Inquiry" required>
+              </div>
+              <div class="col-12">
+                <label for="contactMessage" class="form-label text-light">Message</label>
+                <textarea class="form-control bg-dark text-white border-secondary" id="contactMessage" rows="5" placeholder="Tell me about your project..." required></textarea>
+              </div>
+              <div class="col-12">
+                <button type="submit" class="btn btn-accent px-4 py-2 rounded-pill">Send Message</button>
+              </div>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="footer-section pt-5 pb-4">
+    <div class="container">
+      <div class="row g-4">
+        <div class="col-lg-5">
+          <a class="navbar-brand fw-bold fs-4 d-inline-block mb-3" href="#hero">
+            <i class="fa-solid fa-camera text-accent me-2"></i>PhotoFolio
+          </a>
+          <p class="text-muted-2 col-lg-10">
+            A freelance photography portfolio showcasing nature, portrait, and landscape photography.
+          </p>
+        </div>
+        <div class="col-6 col-lg-3">
+          <h6 class="fw-semibold mb-3 text-white">Quick Links</h6>
+          <ul class="list-unstyled footer-links">
+            <li><a href="#hero">Home</a></li>
+            <li><a href="#about">About</a></li>
+            <li><a href="#portfolio">Gallery</a></li>
+            <li><a href="#services">Services</a></li>
+            <li><a href="#contact">Contact</a></li>
+          </ul>
+        </div>
+        <div class="col-6 col-lg-4">
+          <h6 class="fw-semibold mb-3 text-white">Follow Me</h6>
+          <div class="d-flex gap-3 social-links">
+            <a href="#" class="social-icon" aria-label="Twitter"><i class="fa-brands fa-twitter"></i></a>
+            <a href="#" class="social-icon" aria-label="Facebook"><i class="fa-brands fa-facebook"></i></a>
+            <a href="#" class="social-icon" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
+          </div>
+        </div>
+      </div>
+      <hr class="border-secondary my-4">
+      <p class="text-center text-muted-2 small mb-0">&copy; 2026 PhotoFolio. Built with Bootstrap 5.</p>
+    </div>
+  </footer>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+  <script>
+    // Lightbox modal
+    const lightboxModal = document.getElementById('lightboxModal');
+    lightboxModal.addEventListener('show.bs.modal', (event) => {
+      const trigger = event.relatedTarget;
+      document.getElementById('lightboxImg').src = trigger.getAttribute('data-img');
+      document.getElementById('lightboxTitle').textContent = trigger.getAttribute('data-title');
+    });
+
+    // Close mobile nav on link click
+    document.querySelectorAll('#navContent .nav-link').forEach(link => {
+      link.addEventListener('click', () => {
+        const nav = bootstrap.Collapse.getInstance(document.getElementById('navContent'));
+        if (nav) nav.hide();
+      });
+    });
+
+    // Gallery filter
+    const filterButtons = document.querySelectorAll('.btn-filter');
+    const galleryItems = document.querySelectorAll('.gallery-col');
+
+    filterButtons.forEach(btn => {
+      btn.addEventListener('click', () => {
+        filterButtons.forEach(b => b.classList.remove('active'));
+        btn.classList.add('active');
+
+        const filter = btn.getAttribute('data-filter');
+        galleryItems.forEach(item => {
+          item.style.display = (filter === 'all' || item.getAttribute('data-category') === filter) ? 'block' : 'none';
+        });
+      });
+    });
+  </script>
+</body>
+</html>

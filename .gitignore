@@ -1,5 +1,4 @@
 # Ignore local scratch files and generated output
-Frontend/
 C# concepts/
 CSharpTasks/
 dotNET/
@@ -8,6 +7,7 @@ StudentManagement.Api.slnx
 StudentName_SQL_Server_Tasks.sql
 forms.html
 index.html
+!Frontend/Task05/index.html
 table.html
 .vs/
 bin/
