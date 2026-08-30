@@ -1,4 +1,5 @@
 # Ignore local scratch files and generated output
+Frontend/
 C# concepts/
 CSharpTasks/
 dotNET/
