@@ -1,0 +1,176 @@
+:root {
+  --bg-dark: #0a0a0a;
+  --card-bg: #161616;
+  --accent-green: #27a776;
+  --text-white: #ffffff;
+  --text-muted: #a0a0a0;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  background-color: var(--bg-dark);
+  color: var(--text-white);
+  font-family: Arial, sans-serif;
+}
+
+/* 1. FLEXBOX NAVBAR */
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px 40px;
+  background-color: var(--bg-dark);
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  border-bottom: 1px solid #222;
+}
+
+.logo {
+  font-size: 22px;
+  font-weight: bold;
+  color: var(--text-white);
+  text-decoration: none;
+}
+
+.logo i {
+  color: var(--accent-green);
+}
+
+/* Flexbox Nav Links */
+.nav-menu {
+  display: flex;
+  gap: 25px;
+}
+
+.nav-link {
+  color: var(--text-muted);
+  text-decoration: none;
+  font-size: 15px;
+  transition: color 0.3s ease;
+}
+
+/* Nav Hover Effect */
+.nav-link:hover,
+.nav-link.active {
+  color: var(--text-white);
+}
+
+/* Flexbox Social Links */
+.social-links {
+  display: flex;
+  gap: 15px;
+}
+
+.social-icon {
+  color: var(--text-muted);
+  font-size: 16px;
+  transition: color 0.3s ease, transform 0.3s ease;
+}
+
+/* Social Hover Effect */
+.social-icon:hover {
+  color: var(--accent-green);
+  transform: translateY(-3px);
+}
+
+/* 2. FLEXBOX GALLERY GRID */
+.gallery-section {
+  padding: 40px;
+}
+
+.gallery-container {
+  display: flex;
+  flex-wrap: wrap; /* Allows wrap to new row */
+  gap: 24px;
+  justify-content: center;
+}
+
+/* Responsive Flex Items */
+.gallery-item {
+  flex: 1 1 calc(33.333% - 24px); /* 3 items per row */
+  min-width: 280px;
+  height: 260px;
+  position: relative;
+  overflow: hidden;
+  border-radius: 8px;
+  background-color: var(--card-bg);
+}
+
+.gallery-item img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.5s ease;
+}
+
+/* 3. FLEXBOX OVERLAY & HOVER EFFECTS */
+.overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.65);
+  
+  /* Flexbox centering for overlay content */
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 8px;
+
+  /* Hidden state */
+  opacity: 0;
+  transition: opacity 0.4s ease;
+}
+
+.actions {
+  display: flex;
+  gap: 15px;
+  margin-bottom: 6px;
+}
+
+.actions a {
+  width: 40px;
+  height: 40px;
+  background: rgba(255, 255, 255, 0.2);
+  color: var(--text-white);
+  border-radius: 50%;
+  
+  /* Centering icon inside circle */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-decoration: none;
+  transition: background 0.3s ease, transform 0.3s ease;
+}
+
+/* Action Button Hover */
+.actions a:hover {
+  background: var(--accent-green);
+  transform: scale(1.1);
+}
+
+.overlay h3 {
+  font-size: 18px;
+}
+
+.overlay p {
+  font-size: 13px;
+  color: var(--text-muted);
+}
+
+/* MAIN GALLERY ITEM HOVER EFFECT */
+.gallery-item:hover img {
+  transform: scale(1.12); /* Zoom image */
+}
+
+.gallery-item:hover .overlay {
+  opacity: 1; /* Fade in dark overlay and text */
+}
