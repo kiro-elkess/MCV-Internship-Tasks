@@ -1,0 +1,144 @@
+using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
+using StudentApi.Data;
+using StudentApi.Models;
+
+namespace StudentApi.Controllers
+{
+    [Route("api/[controller]")]
+    [ApiController]
+    public class StudentsController : ControllerBase
+    {
+        private readonly ApplicationDbContext _context;
+
+        public StudentsController(ApplicationDbContext context)
+        {
+            _context = context;
+        }
+
+        // GET: api/students
+        [HttpGet]
+        public async Task<IActionResult> GetAll()
+        {
+            var students = await _context.Students
+                .Include(s => s.Department)
+                .Select(s => new StudentDto
+                {
+                    Id = s.Id,
+                    Name = s.Name,
+                    Age = s.Age,
+                    DepartmentName = s.Department != null ? s.Department.Name : "No Department"
+                })
+                .ToListAsync();
+
+            return Ok(students);
+        }
+
+        // GET: api/students/1
+        [HttpGet("{id}")]
+        public async Task<IActionResult> GetById(int id)
+        {
+            var student = await _context.Students
+                .Include(s => s.Department)
+                .Where(s => s.Id == id)
+                .Select(s => new StudentDto
+                {
+                    Id = s.Id,
+                    Name = s.Name,
+                    Age = s.Age,
+                    DepartmentName = s.Department != null ? s.Department.Name : "No Department"
+                })
+                .FirstOrDefaultAsync();
+
+            if (student == null) return NotFound("Student not found.");
+            return Ok(student);
+        }
+
+        // POST: api/students
+        [HttpPost]
+        public async Task<IActionResult> Create(Student student)
+        {
+            // Validation: Department must exist
+            var departmentExists = await _context.Departments.AnyAsync(d => d.Id == student.DepartmentId);
+            if (!departmentExists)
+            {
+                return BadRequest("The specified Department does not exist.");
+            }
+
+            _context.Students.Add(student);
+            await _context.SaveChangesAsync();
+            return CreatedAtAction(nameof(GetById), new { id = student.Id }, student);
+        }
+
+        // PUT: api/students/1
+        [HttpPut("{id}")]
+        public async Task<IActionResult> Update(int id, Student student)
+        {
+            if (id != student.Id) return BadRequest("ID mismatch.");
+
+            // Validation: Department must exist
+            var departmentExists = await _context.Departments.AnyAsync(d => d.Id == student.DepartmentId);
+            if (!departmentExists)
+            {
+                return BadRequest("The specified Department does not exist.");
+            }
+
+            _context.Entry(student).State = EntityState.Modified;
+            await _context.SaveChangesAsync();
+            return Ok("Student updated successfully.");
+        }
+
+        // DELETE: api/students/1
+        [HttpDelete("{id}")]
+        public async Task<IActionResult> Delete(int id)
+        {
+            var student = await _context.Students.FindAsync(id);
+            if (student == null) return NotFound("Student not found.");
+
+            _context.Students.Remove(student);
+            await _context.SaveChangesAsync();
+            return Ok("Student deleted successfully.");
+        }
+
+        // GET: api/students/search?text=value
+        [HttpGet("search")]
+        public async Task<IActionResult> Search([FromQuery] string text)
+        {
+            if (string.IsNullOrWhiteSpace(text)) return BadRequest("Search text is required.");
+
+            var results = await _context.Students
+                .Include(s => s.Department)
+                .Where(s => s.Name.Contains(text) || (s.Department != null && s.Department.Name.Contains(text)))
+                .Select(s => new StudentDto
+                {
+                    Id = s.Id,
+                    Name = s.Name,
+                    Age = s.Age,
+                    DepartmentName = s.Department != null ? s.Department.Name : "No Department"
+                })
+                .ToListAsync();
+
+            return Ok(results);
+        }
+
+        // GET: api/students/filter-by-age
+        [HttpGet("filter-by-age")]
+        public async Task<IActionResult> FilterByAge()
+        {
+            var students = await _context.Students
+                .Include(s => s.Department)
+                .Where(s => s.Age >= 18 && s.Age <= 22)
+                .OrderBy(s => s.Age)
+                .Select(s => new StudentDto
+                {
+                    Id = s.Id,
+                    Name = s.Name,
+                    Age = s.Age,
+                    DepartmentName = s.Department != null ? s.Department.Name : "No Department"
+                })
+                .ToListAsync();
+
+            return Ok(students);
+        }
+    }
+}
