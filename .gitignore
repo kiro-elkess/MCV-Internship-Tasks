@@ -1,4 +1,4 @@
-# project folders to ignore locally
+# Ignore local scratch files and generated output
 C# concepts/
 CSharpTasks/
 dotNET/
