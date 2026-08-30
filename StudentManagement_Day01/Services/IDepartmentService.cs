@@ -1,0 +1,16 @@
+using DepartmentApi.Models;
+using System.Collections.Generic;
+
+namespace StudentApi.Services
+{
+    public interface IDepartmentService
+    {
+        IEnumerable<Department> GetAll();
+        Department? GetById(int id);
+        Department Create(Department department);
+        Department? Update(int id, Department department);
+        bool Delete(int id);
+        IEnumerable<DepartmentStatisticsDto> GetStatistics();
+        HighestLowestDto GetHighestLowest();
+    }
+}
