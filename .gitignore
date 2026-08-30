@@ -1,39 +1,17 @@
-# Visual Studio
+# project folders to ignore locally
+C# concepts/
+CSharpTasks/
+dotNET/
+StudentManagement_Day01/
+StudentManagement.Api.slnx
+StudentName_SQL_Server_Tasks.sql
+forms.html
+index.html
+table.html
 .vs/
-*.user
-*.suo
-*.vssscc
-*.userosscache
-*.sln.docstates
-
-# Build output
 bin/
 obj/
-out/
-
-# dotNET publish
-publish/
-*.pubxml
-*.pubxml.user
-
-# NuGet
-*.nupkg
-packages/
-project.lock.json
-project.fragment.lock.json
-artifacts/
-
-# OS
+*.user
+*.suo
+*.vsidx
 .DS_Store
-Thumbs.db
-desktop.ini
-
-# Logs
-*.log
-*.tmp
-
-# VS Code
-.vscode/
-
-# Node (if any frontend tooling)
-node_modules/
